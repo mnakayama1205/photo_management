@@ -1,0 +1,11 @@
+<h1>ログイン</h1>
+
+<%= form_with url: "/top/login" do |form| %>
+  <%= form.label :account_id, "ユーザー名" %>
+  <%= form.text_field :account_id %>
+  <br>
+  <%= form.label :password, "パスワード" %>
+  <%= form.text_field :password %>
+  <br>
+  <%= form.submit "ログインする" %>
+<% end %>
