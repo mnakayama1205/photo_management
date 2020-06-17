@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
 
   resources :sessions, only: [:new, :create, :delete]
+
+  resources :users, only: [] do
+    resources :photos do
+    end
+  end
 end
