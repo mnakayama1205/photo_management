@@ -5,14 +5,18 @@ class SessionsController < ApplicationController
   def create
     user_hash = {account_id: params[:account_id], password: params[:password]}
 
-    if User.new(user_hash).valid?
+    @user = User.new(user_hash)
+    if @user.valid?
       user = User.find_by(user_hash)
       if user
         session[:user] = user_hash
         redirect_to user_photos_url(user.account_id)
+      else
+        # ユーザーIDとパスワードが一致するユーザーが存在しません。
+
       end
-    #else
-      #validation error
+    else
+      render :new
     end
   end
 
