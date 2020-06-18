@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
         session[:user] = user_hash
         redirect_to user_photos_url(user.account_id)
       else
-        # ユーザーIDとパスワードが一致するユーザーが存在しません。
-
+        @user.errors.add(:base, "ユーザーIDとパスワードが一致するユーザーが存在しません。")
+        render :new
       end
     else
       render :new
