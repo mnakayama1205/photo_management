@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   before_action :check_login
   def index
-    @photos = User.find_by(account_id: params[:user_id]).try(:photos)
+    @photos = User.find_by(account_id: params[:user_id]).try(:photos).order(created_at: :desc)
+    
   end
 
   def new
@@ -10,6 +11,7 @@ class PhotosController < ApplicationController
 
   def create
     User.find_by(account_id: params[:user_id]).photos.create(photo_params)
+    redirect_to user_photos_path(user_id: params[:user_id])
   end
 
   private

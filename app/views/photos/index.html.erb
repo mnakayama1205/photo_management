@@ -1,3 +1,10 @@
 <%= link_to "ログアウト", session_path("id"), method: :delete %>
 <h1>写真一覧</h1>
 <%= link_to "写真アップロード画面", new_user_photo_path(user_id: params[:user_id] ) %>
+<br>
+<% @photos.each do |photo| %>
+  <div class="photo-box" style="display:inline-block">
+    <div><%= photo.title %></div>
+    <div><%= image_tag(photo.photo, {title: "xxx"}) %></div>
+  </div>
+<% end %>
