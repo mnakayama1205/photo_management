@@ -6,7 +6,8 @@ ja:
         password: "パスワード"
       photo:
         title: "タイトル"
-        photo: "画像フアイル"
+        photo: "画像ファイル"
   errors:
     messages:
       blank: "を入力してください"
+      too_long: "の文字数が制限文字数を超えています。"
