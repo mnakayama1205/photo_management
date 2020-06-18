@@ -20,7 +20,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     session.delete(:user)
+    render :new
   end
 end
