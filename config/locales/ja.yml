@@ -4,6 +4,9 @@ ja:
       user:
         account_id: "ユーザーID"
         password: "パスワード"
+      photo:
+        title: "タイトル"
+        photo: "画像フアイル"
   errors:
     messages:
       blank: "を入力してください"

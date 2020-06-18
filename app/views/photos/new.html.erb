@@ -1,6 +1,14 @@
 <%= link_to "ログアウト", session_path("logout"), method: :delete %>
 <h1>写真アップロード</h1>
 
+<% if @photo.present? %>
+  <ul>
+    <% @photo.errors.full_messages.each do |message| %>
+      <li class="error"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @photo, url: user_photos_path, local: true do |form| %>
   <%= form.label :title, "タイトル" %>
   <%= form.text_field :title %><br>
