@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   before_action :check_login
   def index
-    @photos = User.find_by(account_id: params[:user_id]).try(:photos).order(created_at: :desc)
+    user = User.find_by(account_id: params[:user_id])
+    @photos = user.photos.with_attached_photo.order(created_at: :desc) if user
   end
 
   def new

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :photos, only: [:index, :new, :create] do
     end
   end
+
+  get '/oauth/callback'
 end
