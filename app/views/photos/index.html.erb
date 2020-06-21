@@ -1,15 +1,17 @@
 <%= link_to "ログアウト", session_path("id"), method: :delete %>
 <h1>写真一覧</h1>
 
-<%= link_to "MyTweetAppと連携", "https://arcane-ravine-29792.herokuapp.com/oauth/authorize?response_type=code&client_id=af361473b5c79159de9467b4a9c1721520809d48295accbf799402ae2141df33&redirect_uri=http://localhost:3000/oauth/callback?state=#{params[:user_id]}" %><br>
+<%= link_to "MyTweetAppと連携", "https://arcane-ravine-29792.herokuapp.com/oauth/authorize?response_type=code&client_id=af361473b5c79159de9467b4a9c1721520809d48295accbf799402ae2141df33&redirect_uri=http://localhost:3000/oauth/callback&state=#{params[:user_id]}" %><br>
 <%= link_to "写真アップロード画面", new_user_photo_path(user_id: params[:user_id] ) %>
 <br>
 <% @photos.each do |photo| %>
   <div class="photo-box" style="display:inline-block">
     <div><%= photo.title %></div>
-    <div><%= image_tag(photo.photo, {title: "xxx"}) %></div>
+    <div><%= image_tag photo.photo %></div>
     <div>
-      <button>ツイートする</button>
+      <% if session[:access_token] %>
+        <%= button_to "ツイートする", user_photo_tweets_path(photo_id: photo.id, title: photo.title, token: session[:access_token], method: :post) %>
+      <% end %>
     </div>
   </div>
 <% end %>
