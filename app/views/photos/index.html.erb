@@ -10,7 +10,7 @@
     <div><%= image_tag photo.photo %></div>
     <div>
       <% if session[:access_token] %>
-        <%= button_to "ツイートする", user_photo_tweets_path(photo_id: photo.id, title: photo.title, token: session[:access_token], method: :post) %>
+        <%= button_to "ツイートする", user_photo_tweets_path(photo_id: photo.id, title: photo.title, method: :post) %>
       <% end %>
     </div>
   </div>
